@@ -111,6 +111,13 @@ else{return false;}
        btn.disabled=false;
     }     
     }
+    else{ checkP=false;
+           // error1.innerText="Make sure email is more than 3 characters and has @ and a .";
+            console.log("false");
+            error2.innerText="Make sure password is more than 8 characters";
+       error2.style.color="red";
+       btn.disabled=true;
+        }
     }
     function checkEmail(){
        // e.preventDefault();
@@ -122,8 +129,12 @@ else{return false;}
             error1.innerText="";
          checkE=true;
         }
-        else{
+        else{ checkE=false;
+            error1.innerText="Make sure email is more than 3 characters and has @ and a .";
             console.log("false");
+            error2.innerText="";
+       error2.style.color="red";
+       btn.disabled=true;
         }
         if(checkE&&checkP){
        error2.innerText="All good to go!";
