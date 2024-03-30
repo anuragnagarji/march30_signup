@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            position: relative;
+    top:50px;
+            Width:498px;
+height:300px;
+top: 19px;
+left: 23px;
+border-radius: 5px;
+border: 1px black solid;  
+background-color: aliceblue; 
+        }
+        #form {
+    padding: 20px;      
+           
+}
+.formEle{
+    
+    display: block;
+    width: 340px;
+height: 17px;
+top: 10px;
+left: 23px;
+border-radius: 5px;
+font-family: Inter;
+font-size: 12px;
+font-weight: 400;
+line-height: 15px;
+letter-spacing: 0em;
+text-align: left;
+padding: 5px;
+         
+}
+#div2,#div3{
+    margin: 20px 0px;
+}
+#submit1{
+    width: 128px;
+height: 27px;
+top: 199px;
+left: 23px;
+border-radius: 5px;
+border: 1px solid;
+
+}
+#error1,#error2{
+    font-family: Inter;
+font-size: 12px;
+font-weight: 400;
+line-height: 15px;
+letter-spacing: 0em;
+text-align: left;
+color: #FF0000;
+
+}
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <form id="form"  onsubmit="return confirm1()">
+            <div id="div2">
+            <label for="email" class="formEle">Email</label>
+            <input type="text" onchange="checkEmail()" id="email" name="email" class="formEle" placeholder="Example@email.com">
+             </div>
+             <p id="error1">Make sure email is more than 3 characters and has @ and a .</p>
+             <div id="div3">
+            <label for="pass" class="formEle">Password</label>
+            <input onchange="checkPass()" type="password" id="pass" name="pass" class="formEle" placeholder="Your Password">
+        </div>
+        <p id="error2">Make sure password is more than 8 characters.</p>
+             
+            <input type="submit" id="submit1"   value="Submit" disabled>
+        </form>
+</div>
+    <script>
+    let btn=document.getElementById("submit1");
+    let email=document.getElementById("email");    
+    let pass=document.getElementById("pass");
+    let error1=document.getElementById("error1");
+    let error2=document.getElementById("error2");
+    let checkE=false,checkP=false;
+    function confirm1(e){
+      
+        if (window.confirm("Do you want to confirm detail?")) {
+            alert("successful signup!");
+  window.open("index.html", "successful signup! ");
+}
+else{return false;}
+
+    }
+
+    
+
+
+    function checkPass(){
+        let pValue=pass.value;
+        console.log(pValue.length);
+        if(pValue.length>8){
+            error2.innerText="";
+            checkP=true;
+            if(checkE&&checkP){
+               console.log("hello")
+                error2.innerText="All good to go!";
+       error2.style.color="green";
+       btn.disabled=false;
+    }     
+    }
+    }
+    function checkEmail(){
+       // e.preventDefault();
+       let eValue=email.value;
+       console.log(eValue);
+        console.log(email.value+" "+pass.value);
+        if((eValue.length>3)&&(eValue.includes("@"))&&(eValue.includes("."))){
+            console.log("true");
+            error1.innerText="";
+         checkE=true;
+        }
+        else{
+            console.log("false");
+        }
+        if(checkE&&checkP){
+       error2.innerText="All good to go!";
+       error2.style.color="green";
+       btn.disabled=false;
+    }     
+    }    
+    </script>
+</body>
+</html>
